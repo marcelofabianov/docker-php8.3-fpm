@@ -66,6 +66,9 @@ RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.o
 
 RUN composer self-update
 
+RUN curl -sS https://get.symfony.com/cli/installer | bash && \
+    mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+
 RUN rm -rf /var/lib/apt/lists/*
 
 COPY --chown=devs:www-data . /var/www
