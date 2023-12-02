@@ -81,7 +81,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/t
   git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/dev/.oh-my-zsh/plugins/zsh-autosuggestions && \
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/dev/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
-COPY ../zsh/.zshrc /home/dev/.zshrc
+COPY .zshrc /home/dev/.zshrc
 
 WORKDIR /var/www
 
