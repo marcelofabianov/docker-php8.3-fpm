@@ -2,27 +2,11 @@
 Thumbs.db
 desktop.ini
 Desktop.ini
-*.swp
 
+*.swp
 *.exe
 *.out
 *.app
-
-/bin
-/pkg
-/vendor
-
-/.cache
-/.terraform
-
-*.code-workspace
-*.iml
-
-*.log
-*.log.*
-*.tmp
-
-bin/
 *.dll
 *.p1
 *.p2
@@ -31,4 +15,17 @@ bin/
 *.pxf
 *.pem
 
+/bin
+/pkg
+/vendor
+/.cache
+*.code-workspace
+*.iml
+
+*.log
+*.log.*
+*.tmp
+
 .idea
+/.zshrc
+/.zsh_history
