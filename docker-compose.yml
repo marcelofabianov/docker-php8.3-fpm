@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  app:
-    container_name: app
+  php-fpm:
+    container_name: php-fpm
     image: marcelofabianov/php8.3-fpm:latest
     build:
       context: ./_docker/local/php-fpm
@@ -16,8 +16,8 @@ services:
       - "9003:9003"
       - "8888:8888"
     networks:
-      - app_network
+      - php_network
 
 networks:
-  app_network:
+  php_network:
     driver: bridge
