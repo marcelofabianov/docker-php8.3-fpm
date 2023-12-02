@@ -38,3 +38,7 @@ docker compose up -d
 ```bash
 docker exec -it php-fpm zsh
 ```
+
+## Acessando no navegador
+
+Para acessar o servidor web, utilize a url: `http://localhost:8888`.
