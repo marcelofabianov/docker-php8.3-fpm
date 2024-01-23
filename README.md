@@ -30,7 +30,7 @@ Recomendo ter em seu ambiente:
 1. Clone o repositório
 
 ```bash
-git clone git@github.com:marcelofabianov/SavingsMate.git
+git git@github.com:marcelofabianov/docker-php8.3-fpm.git
 ```
 
 2. Preparando o ambiente
@@ -44,7 +44,7 @@ sh _docker/local/init.sh
 Utilize o comando abaixo para acessar o container:
 
 ```bash
-docker exec -it php-fpm zsh
+docker exec -it app zsh
 ```
 
 ## Para utilizar os alias
