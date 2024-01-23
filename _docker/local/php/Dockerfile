@@ -13,7 +13,7 @@ RUN apt-get update -yqq && \
   curl \
   unzip \
   nano \
-  vim \
+  tree \
   zsh \
   openssl \
   libpq-dev \
@@ -25,49 +25,48 @@ RUN apt-get update -yqq && \
   libicu-dev \
   libssl-dev \
   libxml2-dev \
-  libmemcached-dev
+  libmemcached-dev \
+  nodejs \
+  npm
 
 RUN docker-php-ext-configure pgsql --with-pgsql=/usr/local/pgsql && \
-    docker-php-ext-configure intl && \
-    docker-php-ext-install \
-    intl \
-    zip \
-    mbstring \
-    pcntl \
-    sockets \
-    exif \
-    bcmath \
-    soap \
-    simplexml \
-    pgsql \
-    pdo_pgsql
+  docker-php-ext-configure intl && \
+  docker-php-ext-install \
+  intl \
+  zip \
+  mbstring \
+  pcntl \
+  sockets \
+  exif \
+  bcmath \
+  soap \
+  simplexml \
+  pgsql \
+  pdo_pgsql
 
 RUN pecl install \
-    redis \
-    apcu \
-    xdebug \
-    swoole && \
-    docker-php-ext-enable \
-    xdebug \
-    redis \
-    opcache \
-    swoole \
-    apcu && \
-    pecl clear-cache
+  redis \
+  apcu \
+  xdebug \
+  swoole && \
+  docker-php-ext-enable \
+  xdebug \
+  redis \
+  opcache \
+  swoole \
+  apcu && \
+  pecl clear-cache
 
 COPY php.ini /usr/local/etc/php/
 
-RUN groupadd -g 1000 dev && \
-  useradd -m -u 1000 -g dev -s $(which zsh) dev && \
+# Atencão: Usuario uid 1001
+RUN groupadd -g 1001 dev && \
+  useradd -m -u 1001 -g dev -s $(which zsh) dev && \
   usermod -a -G www-data dev
 
 RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/composer.phar && \
-    chmod 755 /usr/local/bin/composer
-
-RUN composer self-update
-
-RUN curl -sS https://get.symfony.com/cli/installer | bash && \
-    mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+  chmod 755 /usr/local/bin/composer && \
+  composer self-update
 
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -87,6 +86,6 @@ WORKDIR /var/www
 
 EXPOSE 9000
 EXPOSE 9003
-EXPOSE 8888
+EXPOSE 8000
 
 CMD ["php-fpm"]

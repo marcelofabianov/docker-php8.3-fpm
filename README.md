@@ -1,10 +1,10 @@
-# PHP 8.3 (fpm)
+# PHP 8.3
 
-Ambiente docker para se trabalhar com PHP 8.3 (fpm).
+Ambiente docker para se trabalhar com PHP 8.3.
 
 ## Extensões
 
-Algumas extensões já estão instaladas, mas você pode adicionar mais no arquivo `_docker/php-fpm/Dockerfile`.
+Algumas extensões já estão instaladas, mas você pode adicionar mais no arquivo `_docker/php/Dockerfile`.
 
 - bcmath
 - intl
@@ -27,10 +27,16 @@ Recomendo ter em seu ambiente:
 
 ## Para iniciar
 
-Utilize o comando abaixo para iniciar o container:
+1. Clone o repositório
 
 ```bash
-docker compose up -d
+git clone git@github.com:marcelofabianov/SavingsMate.git
+```
+
+2. Preparando o ambiente
+
+```bash
+sh _docker/local/init.sh
 ```
 
 ## Para acessar o container
@@ -41,10 +47,18 @@ Utilize o comando abaixo para acessar o container:
 docker exec -it php-fpm zsh
 ```
 
+## Para utilizar os alias
+
+Pode ser utilizado alias para executar comando fora dele.
+
+```bash
+source .alias
+```
+
 ## Utilizando o container
 
 Foi adicionado o `zsh` para facilitar a utilização do container, junto de alguns plugins para melhorar a experiência.
-Também foi adicionado o `composer` para facilitar a instalação de dependências, alem da CLI do `symfony`.
+Também foi adicionado o `composer` para facilitar a instalação de dependências.
 Alguns exemplos de comandos podem ser vistos abaixo.
 
 Para ver a versão do PHP
@@ -69,15 +83,3 @@ Para ver a versão do Composer
 
 ```bash
 composer -V
-```
-
-Para ver os comandos do Symfony
-
-```bash
-symfony
-```
-
-## Acessando no navegador
-
-Temos um exemplo de `index.php` com um `phpinfo()` para testar o ambiente.
-Acesse url: `http://localhost:8888`.
