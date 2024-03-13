@@ -60,8 +60,8 @@ RUN pecl install \
 COPY php.ini /usr/local/etc/php/
 
 # Atencão: Usuario uid 1001
-RUN groupadd -g 1001 dev && \
-  useradd -m -u 1001 -g dev -s $(which zsh) dev && \
+RUN groupadd -g 501 dev && \
+  useradd -m -u 501 -g dev -s $(which zsh) dev && \
   usermod -a -G www-data dev
 
 RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/composer.phar && \
